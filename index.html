@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick-theme.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Carousel</title>
+  </head>
+  <body>
+    <section class="carousel__slider">
+      <div class="container">
+        <!-- Desktop Slider -->
+        <div class="row slider-for-desktop">
+          <div class="col-md-12">
+            <div class="cambiobike-slider__title">Slider Animation</div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="carousel__box carousel__box--first">
+              <img class="img-style img-current" src="img/test2.jpg" />
+
+              <img class="img-style" src="img/test2.jpg" />
+
+              <img class="img-style" src="img/test2.jpg" />
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="carousel__box carousel__box--second">
+              <img class="img-style img-current" src="img/test2.jpg" />
+
+              <img class="img-style" src="img/test2.jpg" />
+
+              <img class="img-style" src="img/test2.jpg" />
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="carousel__box carousel__box--third">
+              <img class="img-style img-current" src="img/test2.jpg" />
+
+              <img class="img-style" src="img/test2.jpg" />
+
+              <img class="img-style" src="img/test2.jpg" />
+
+              <a href="#" class="btn-click btn-prev">
+                <div class="left-arrow">
+                  <svg
+                    width="24"
+                    height="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                  >
+                    <path
+                      d="M11 21.883l-6.235-7.527-.765.644 7.521 9 7.479-9-.764-.645-6.236 7.529v-21.884h-1v21.883z"
+                    />
+                  </svg>
+                </div>
+              </a>
+
+              <a href="#" class="btn-click btn-next">
+                <div class="right-arrow">
+                  <svg
+                    width="24"
+                    height="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                  >
+                    <path
+                      d="M11 21.883l-6.235-7.527-.765.644 7.521 9 7.479-9-.764-.645-6.236 7.529v-21.884h-1v21.883z"
+                    />
+                  </svg>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Slider -->
+        <!-- This is a completely different structure from the code above using Slick slider -->
+        <div class="row slider-for-mobile">
+          <div class="col-md-12">
+            <div class="cambiobike-slider__title">Slider Animation</div>
+          </div>
+        </div>
+
+        <div class="slider-for-mobile single-item">
+          <div class="slider-bike-style">
+            <img class="image-slider-mobile" src="img/test2.jpg" />
+          </div>
+
+          <div class="slider-bike-style">
+            <img class="image-slider-mobile" src="img/test2.jpg" />
+          </div>
+
+          <div class="slider-bike-style">
+            <img class="image-slider-mobile" src="img/test2.jpg" />
+          </div>
+
+          <div class="slider-bike-style">
+            <img class="image-slider-mobile" src="img/test2.jpg" />
+          </div>
+
+          <div class="slider-bike-style">
+            <img class="image-slider-mobile" src="img/test2.jpg" />
+          </div>
+
+          <div class="slider-bike-style">
+            <img class="image-slider-mobile" src="img/test2.jpg" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick.min.js"></script>
+  </body>
+</html>
+<script>
+  $(document).ready(function () {
+    $(".btn-click").click(function (event) {
+      event.preventDefault();
+      let currentImage = $(".carousel__box .img-style.img-current");
+
+      // Previous Button is Clicked
+      if ($(this).hasClass("btn-prev")) {
+        // If Current Displayed image is the first child do nothing
+        if ($(currentImage).is(":first-child")) {
+        } else {
+          $(currentImage).prev().addClass("img-current");
+
+          setTimeout(function () {
+            $(currentImage).removeClass("img-current");
+          }, 500);
+        }
+      }
+      // Next Button is Clicked
+      else {
+        // If Current Displayed image is the last child do nothing
+        if ($(currentImage).is(":last-child")) {
+        } else {
+          $(currentImage).next().addClass("img-current");
+
+          setTimeout(function () {
+            $(currentImage).removeClass("img-current");
+          }, 500);
+        }
+      }
+    });
+  });
+
+  $(document).ready(function () {
+    $(".single-item").slick({
+      arrows: false,
+      dots: true,
+      slidesToShow: 1,
+      centerMode: true,
+      centerPadding: "0px"
+    });
+  });
+</script>
